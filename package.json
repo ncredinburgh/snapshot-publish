@@ -1,0 +1,31 @@
+{
+  "name": "snapshot-publish",
+  "version": "1.0.0",
+  "description": "Uses NPM to publish modules, with support for snapshots",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint -c xo-space *.js && mocha test.js"
+  },
+  "repository": "NCR-CoDE/snapshot-publish",
+  "author": "Keir Lawson",
+  "license": "MIT",
+  "dependencies": {
+    "lodash.endswith": "^3.1.2",
+    "pify": "^2.3.0",
+    "pinkie-promise": "^2.0.0",
+    "read-pkg-up": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-xo-space": "^0.8.0",
+    "mocha": "^2.4.5",
+    "proxyquire": "^1.7.4",
+    "sinon": "^1.17.3"
+  }
+}
