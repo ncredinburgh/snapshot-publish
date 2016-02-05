@@ -16,6 +16,19 @@ describe('snapshot-publish', function () {
     });
   });
 
+  it('should error when package version is not valid semver', function (done) {
+    testee('./fixture/invalid').catch(function (err) {
+      assert(err.message.match(/Invalid version/) !== null);
+      done();
+    });
+  });
+
+  it('should tag as snapshot when snapshot prerelease tag is one of several', function () {
+    return testee('./fixture/multitag').then(function () {
+      assert(execStub.calledWithMatch(/--tag snapshot/));
+    });
+  });
+
   it('should unpublish previous snapshot when package is snapshot version', function () {
     return testee('./fixture/snapshot').then(function () {
       assert(execStub.calledWithMatch(/unpublish/));
