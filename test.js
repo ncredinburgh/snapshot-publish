@@ -46,4 +46,16 @@ describe('snapshot-publish', function () {
       sinon.assert.calledWithMatch(execStub, /--tag snapshot/);
     });
   });
+
+  it('should publish with milestone tag when package is milestone version', function () {
+    return testee('./fixture/milestone').then(function () {
+      sinon.assert.calledWithMatch(execStub, /--tag milestone/);
+    });
+  });
+
+  it('should publish with candidate tag when package is release candidate version', function () {
+    return testee('./fixture/candidate').then(function () {
+      sinon.assert.calledWithMatch(execStub, /--tag candidate/);
+    });
+  });
 });
