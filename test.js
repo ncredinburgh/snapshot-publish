@@ -12,7 +12,7 @@ describe('snapshot-publish', function () {
 
   it('should publish to an npm registry', function () {
     return testee('./fixture/nosnapshot').then(function () {
-      assert(execStub.calledWith('npm publish'));
+      sinon.assert.calledWith(execStub, 'npm publish');
     });
   });
 
@@ -25,25 +25,25 @@ describe('snapshot-publish', function () {
 
   it('should tag as snapshot when snapshot prerelease tag is one of several', function () {
     return testee('./fixture/multitag').then(function () {
-      assert(execStub.calledWithMatch(/--tag snapshot/));
+      sinon.assert.calledWithMatch(execStub, /--tag snapshot/);
     });
   });
 
   it('should unpublish previous snapshot when package is snapshot version', function () {
     return testee('./fixture/snapshot').then(function () {
-      assert(execStub.calledWithMatch(/unpublish/));
+      sinon.assert.calledWithMatch(execStub, /unpublish/);
     });
   });
 
   it('should not unpublish when package is not snapshot version', function () {
     return testee('./fixture/nosnapshot').then(function () {
-      assert(execStub.calledWithMatch(/unpublish/) === false);
+      sinon.assert.neverCalledWithMatch(execStub, /unpublish/);
     });
   });
 
   it('should publish with snapshot tag when package is snapshot version', function () {
     return testee('./fixture/snapshot').then(function () {
-      assert(execStub.calledWithMatch(/--tag snapshot/));
+      sinon.assert.calledWithMatch(execStub, /--tag snapshot/);
     });
   });
 });
