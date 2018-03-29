@@ -1,6 +1,6 @@
 # snapshot-publish
 
-[![Build Status](https://travis-ci.org/NCR-CoDE/snapshot-publish.svg?branch=master)](https://travis-ci.org/NCR-CoDE/snapshot-publish)
+[![Build Status](https://travis-ci.org/ncredinburgh/snapshot-publish.svg?branch=master)](https://travis-ci.org/NCR-CoDE/snapshot-publish)
 
 A thin wrapper around `npm publish` that detects if the module to be published is at a snapshot version (identified via the `SNAPSHOT`
 prerelease tag) and, if so, first unpublishes the previous snapshot then publishes with the `snapshot` tag.  Additionally, milestone
