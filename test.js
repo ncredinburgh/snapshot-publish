@@ -1,9 +1,9 @@
 /* eslint-env mocha */
-var proxyquire = require('proxyquire').noCallThru();
-var sinon = require('sinon');
-var assert = require('assert');
-var execStub = sinon.stub().callsArg(2);
-var testee = proxyquire('./', {child_process: {exec: execStub}});// eslint-disable-line camelcase
+const proxyquire = require('proxyquire').noCallThru();
+const sinon = require('sinon');
+const assert = require('assert');
+const execStub = sinon.stub().callsArg(2);
+const testee = proxyquire('./', {child_process: {exec: execStub}});// eslint-disable-line camelcase
 
 describe('snapshot-publish', function () {
   beforeEach(function () {
