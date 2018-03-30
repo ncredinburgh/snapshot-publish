@@ -12,7 +12,7 @@
   "dependencies": {
     "pify": "^2.3.0",
     "read-pkg-up": "^1.0.1",
-    "semver": "^5.1.0"
+    "semver": "^5.5.0"
   },
   "engines": {
     "node": ">=6"

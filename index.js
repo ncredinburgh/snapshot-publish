@@ -33,7 +33,11 @@ function getMatchingDistTags(prereleaseTags) {
 }
 
 function getDistTagForVersion(version) {
-  const prereleaseTags = semver.parse(version).prerelease;
+  const prereleaseTags = semver.prerelease(version);
+
+  if (prereleaseTags === null) {
+    return null;
+  }
 
   const matchingDistTags = getMatchingDistTags(prereleaseTags);
 
