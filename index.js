@@ -4,6 +4,7 @@ const pify = require('pify');
 const semver = require('semver');
 const childProcess = pify(require('child_process'));
 
+const STDOUT_BUFFER_SIZE = 2000 * 1024;
 const POSSIBLE_TAGS = {
   snapshot: /^snapshot$/i,
   candidate: /^rc\d*$/i,
@@ -55,7 +56,7 @@ module.exports = function (cwd) {
 
   function publish(distTag) {
     const publishCommand = 'npm publish' + (distTag ? ' --tag ' + distTag : '');
-    return childProcess.exec(publishCommand, {cwd: cwd});
+    return childProcess.exec(publishCommand, {cwd: cwd, maxBuffer: STDOUT_BUFFER_SIZE});
   }
 
   function publishPackage(packageObj) {
@@ -63,7 +64,7 @@ module.exports = function (cwd) {
     const distTag = getDistTagForVersion(version);
 
     if (distTag === 'snapshot') {
-      return childProcess.exec('npm unpublish --force', {cwd: cwd})
+      return childProcess.exec('npm unpublish --force', {cwd: cwd, maxBuffer: STDOUT_BUFFER_SIZE})
         .then(publish.bind(undefined, distTag));
     }
 
