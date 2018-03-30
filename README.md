@@ -11,13 +11,13 @@ Note that unpublishing does not work on the main NPM registry, however this modu
 ## Install
 
 ```
-$ npm install --save snapshot-publish
+$ npm install snapshot-publish
 ```
 
 ## Usage
 
 ```js
-var publish = require('snapshot-publish');
+const publish = require('snapshot-publish');
 
 publish().then(function () {
 	console.log('A new version has been published!');
